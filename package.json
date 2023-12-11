@@ -18,6 +18,8 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.1.0",
     "prettier": "3.0.0"
   }
 }
