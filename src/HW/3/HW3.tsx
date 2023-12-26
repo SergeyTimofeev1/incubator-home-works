@@ -9,7 +9,7 @@ export const HW3 = () => {
   // - дописать функциональность (где указано комментариями)
   // - приложение должно компилироваться и запускаться в браузере
 
-  const [currentText, setCurrentText] = useState("");
+  const [currentText, setCurrentText] = useState<string>("");
   const [texts, setTexts] = useState<string[]>([
     "То, что вы делаете по ночам, то и делает вас богатым. (Аль Капоне)",
   ]);
@@ -22,13 +22,13 @@ export const HW3 = () => {
     // ЗАСЕТАТЬ БЫ ТЕКСТ В texts И НЕ ПОТЕРЯТЬ НАПУТСТВИЕ ИЗ ПРОШЛОГО ВЕКА)
     setTexts([...texts, currentText]);
     // А ЗАТЕМ УБРАТЬ ЗА СОБОЙ В currentText
-    setCurrentText(currentText);
+    setCurrentText("");
   };
 
   return (
     <div id={"hw03"}>
       {currentText ? (
-        <h1 id={"hw03-text"}>ЗДЕСЬ ХОТЕЛОСЬ БЫ УВИДЕТЬ ВВОДИМЫЙ ТЕКСТ</h1>
+        <h1 id={"hw03-text"}>{currentText}</h1>
       ) : (
         <h1 id={"hw03-default-text"}>Здесь появится новое дело</h1> // ничего не меняем, здесь все норм
       )}
@@ -37,7 +37,7 @@ export const HW3 = () => {
         id={"hw03-input"}
         type="text"
         value={currentText}
-        onChange={handleChange}
+        onChange={(e) => setCurrentText(e.target.value)}
       />
 
       <button id={"hw03-button"} onClick={handleSave}>
